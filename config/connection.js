@@ -1,0 +1,22 @@
+// set up connection to run local or JawsDB/Heroku
+const Sequelize = require("sequelie");
+require("dotenv").config();
+
+let sequelize;
+
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      host: "localhost",
+      dialiect: "mysql",
+      port: 3306,
+    }
+  );
+}
+
+module.exports = sequelize;
