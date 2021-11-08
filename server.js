@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var path = require("path");
 var PORT = process.env.PORT || 3001;
 var allRoutes = require("./controllers");
 const cors = require("cors");
@@ -20,7 +21,7 @@ app.use(cors());
 
 app.use("/", allRoutes);
 
-sequelize.sync({ force: false }).then(function () {
+sequelize.sync({ force: true }).then(function () {
   app.listen(PORT, function () {
     console.log("🌍App listening on PORT " + PORT + "🌍 ");
   });

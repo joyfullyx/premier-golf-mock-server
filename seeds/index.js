@@ -8,6 +8,8 @@ const seedAll = async () => {
 
   await seedDeals();
   console.log("\n---------- DEALS SYNCED ----------\n");
+
+  process.exit(0);
 };
 
 seedAll();

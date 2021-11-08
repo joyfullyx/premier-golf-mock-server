@@ -20,7 +20,7 @@ Deals.init(
       allowNull: false,
     },
     numberOfDeals: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
