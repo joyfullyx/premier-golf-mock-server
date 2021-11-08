@@ -5,8 +5,8 @@ var allRoutes = require("./controllers");
 const cors = require("cors");
 
 // require models for sync
-var sequelize = require("./confib/connection.js");
-const { Deals } = require("./models");
+var sequelize = require("./config/connection.js");
+const { Deals } = require("./models/Deals");
 
 // set up express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +20,7 @@ app.use(cors());
 
 app.use("/", allRoutes);
 
-sequelize.sync({ force: false }).then(function () {
+sequelize.sync({ force: true }).then(function () {
   app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
