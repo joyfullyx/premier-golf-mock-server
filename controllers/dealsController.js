@@ -3,13 +3,25 @@ const router = express.Router();
 const Deals = require("../models/Deals");
 
 // GET all deals
-router.get("/", async (req, res) => {
-  try {
-    const dealsData = await Deals.findAll();
-    res.status(200).json(dealsData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+// router.get("/", async (req, res) => {
+//   try {
+//     const dealsData = await Deals.findAll();
+//     res.status(200).json(dealsData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+router.get("/", (req, res) => {
+  Deals.findAll()
+    .then((deals) => {
+      res.json(deals);
+      console.log("res:", res);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "error", err });
+    });
 });
 
 // GET ONE deal by ID
